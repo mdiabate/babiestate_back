@@ -12,6 +12,9 @@ const pool = new Pool({
   port: 5432, // Default PostgreSQL port
 });
 
+// Middleware to parse JSON
+app.use(express.json());
+
 // Health check route
 app.get('/', (req, res) => {
   res.send('Hello, Real Estate Backend is running!');
@@ -30,5 +33,8 @@ app.get('/api/properties', async (req, res) => {
   }
 });
 
-// Export the app for Cloud Run
-exports.helloHttp = app;
+// Start the server on the port provided by Cloud Run
+const PORT = process.env.PORT || 8080; // Use the PORT environment variable provided by Cloud Run
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
