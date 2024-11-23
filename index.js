@@ -7,7 +7,7 @@ const app = express();
 const pool = new Pool({
   user: 'postgres', // Replace with your database username if different
   host: `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`, // Cloud SQL instance connection name
-  database: 'real_estate_db', // Replace with your database name if different
+  database: 'postgres', // Replace with your database name if different
   password: process.env.DB_PASSWORD, // Database password from environment variable
   port: 5432, // Default PostgreSQL port
 });
